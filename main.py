@@ -7,10 +7,18 @@ from selenium.webdriver.support import expected_conditions as EC
 
 import time
 
-name = "Benjamin Bliss"
-email = "bbliss@uoguelph.ca"
-phone = "2262350542"
-PATH = "C:\\Program Files (x86)\\chromedriver.exe"
+try:
+    file = open("user.txt", 'r')
+    name = file.readline()
+    email = file.readline()
+    phone = file.readline()
+    PATH = file.readline()
+
+    
+except IOError:
+    quit()
+
+
 ser = Service(PATH)
 driver = webdriver.Chrome(service=ser)
 #driver.maximize_window()
